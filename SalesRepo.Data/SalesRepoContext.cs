@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SalesRepo.Data.Enums;
 
 namespace SalesRepo.Data.Models;
 
@@ -43,16 +44,19 @@ public class SalesRepoContext : DbContext
 
             entity.Property(e => e.Status)
                 .IsRequired()
-                .HasMaxLength(20);
+                .HasMaxLength(20)
+                .HasConversion(
+            a => a.ToString(),
+            a => (OrderStatus)Enum.Parse(typeof(OrderStatus), a));
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.CustomerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("FK_Orders_CustomerId");
 
             entity.HasOne(d => d.Product).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("FK_Orders_ProductId");
         });
 

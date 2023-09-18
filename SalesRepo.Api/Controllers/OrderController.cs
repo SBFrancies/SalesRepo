@@ -4,6 +4,7 @@ namespace SalesRepo.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ProductController : ControllerBase
+public class OrderController : ControllerBase
 {
+
 }
