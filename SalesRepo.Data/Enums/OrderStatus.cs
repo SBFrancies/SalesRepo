@@ -5,6 +5,7 @@ public enum OrderStatus
     Pending,
     Shipped,
     Cancelled,
-    Complete,
+    Delivered,
+    Returned,
 }
 

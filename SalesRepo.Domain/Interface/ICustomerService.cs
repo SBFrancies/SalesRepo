@@ -9,9 +9,11 @@ public interface ICustomerService
 
     Task<CustomerDto> UpdateCustomerAsync(UpdateCustomerRequest request);
 
-    Task<IList<CustomerDto>> GetCustomerListAsync(string search);
+    Task<CustomerDto> GetCustomerAsync(int id);
 
-    Task<IList<OrderDto>> GetCustomerOrderListAsync();
+    Task<IList<CustomerDto>> GetCustomerListAsync(string? search);
+
+    Task<IList<OrderDto>> GetCustomerOrderListAsync(int id);
 
     Task DeleteCustomerAsync(int id);
 }

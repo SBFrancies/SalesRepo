@@ -1,5 +1,14 @@
-﻿namespace SalesRepo.UnitTests.Validation;
+﻿using FluentValidation;
+using SalesRepo.Domain.Models.Request;
 
-public class CreateProductValidator
+namespace SalesRepo.UnitTests.Validation;
+
+public class CreateProductValidator : AbstractValidator<CreateProductRequest>
 {
+    public CreateProductValidator()
+    {
+        RuleFor(a => a.Name).NotNull().NotEmpty().MaximumLength(100);
+        RuleFor(a => a.Description).NotNull().NotEmpty().MaximumLength(500);
+        RuleFor(a => a.Sku).NotNull().NotEmpty().MaximumLength(40);
+    }
 }

@@ -5,6 +5,11 @@ namespace SalesRepo.Data.Models;
 
 public class SalesRepoContext : DbContext
 {
+    public SalesRepoContext()
+    {
+
+    }
+
     public SalesRepoContext(DbContextOptions<SalesRepoContext> options)
         : base(options)
     {

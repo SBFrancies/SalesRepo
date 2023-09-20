@@ -1,5 +1,13 @@
-﻿namespace SalesRepo.UnitTests.Validation;
+﻿using FluentValidation;
+using SalesRepo.Data.Enums;
+using SalesRepo.Domain.Models.Request;
 
-public class UpdateOrderValidator
+namespace SalesRepo.UnitTests.Validation;
+
+public class UpdateOrderValidator : AbstractValidator<UpdateOrderRequest>
 {
+    public UpdateOrderValidator()
+    {
+        RuleFor(a => a.Status).NotEqual(OrderStatus.Pending).IsInEnum();
+    }
 }

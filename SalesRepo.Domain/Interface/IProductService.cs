@@ -9,9 +9,11 @@ public interface IProductService
 
     Task<ProductDto> UpdateProductAsync(UpdateProductRequest request);
 
-    Task<IList<ProductDto>> GetProductListAsync(string search);
+    Task<ProductDto> GetProductAsync(int id);
 
-    Task<IList<OrderDto>> GetProductOrderListAsync();
+    Task<IList<ProductDto>> GetProductListAsync(string? search);
+
+    Task<IList<OrderDto>> GetProductOrderListAsync(int id);
 
     Task DeleteProductAsync(int id);
 }

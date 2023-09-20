@@ -2,6 +2,10 @@
 
 public class OrderDto
 {
+    public int CustomerId { get; init; }
+
+    public int ProductId { get; init; }
+
     public string OrderStatus { get; init; } = null!;
 
     public DateTimeOffset CreatedDate { get; init; }
