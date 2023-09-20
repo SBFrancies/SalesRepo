@@ -69,7 +69,8 @@ public class ProductService : IProductService
         return await context.Products
              .Include(a => a.Orders)
              .Where(a => a.Id == id)
-             .OrderBy(a => new { a.Name, a.Sku })
+             .OrderBy(a => a.Name)
+             .ThenBy(a => a.Sku)
              .Select(a => new ProductDto
              {
                  Sku = a.Sku,

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SalesRepo.Domain.Interface;
 using SalesRepo.Domain.Models.Request;
@@ -62,11 +63,17 @@ public class ProductController : ControllerBase
     }
 
     [HttpPut]
+    [Route("{id}")]
     [Consumes("application/json")]
     [Produces("application/json")]
-    public async Task<IActionResult> PutAsync([FromBody] UpdateProductRequest request)
+    public async Task<IActionResult> PutAsync([FromRoute] int id, [FromBody] UpdateProductRequest request)
     {
+        if(id != request.Id)
+        {
+            throw new ValidationException("Route ID does not match request body ID");
+        }
+
         var response = await _productService.UpdateProductAsync(request);
-        return StatusCode((int)HttpStatusCode.Created, response);
+        return Ok(response);
     }
 }

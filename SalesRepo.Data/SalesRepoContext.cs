@@ -7,7 +7,6 @@ public class SalesRepoContext : DbContext
 {
     public SalesRepoContext()
     {
-
     }
 
     public SalesRepoContext(DbContextOptions<SalesRepoContext> options)

@@ -68,7 +68,8 @@ public class CustomerService : ICustomerService
         return await context.Customers
             .Include(a => a.Orders)
             .Where(a => a.Id == id)
-             .OrderBy(a => new { a.FirstName, a.LastName })
+             .OrderBy(a => a.FirstName)
+             .ThenBy(a => a.LastName)
              .Select(a => new CustomerDto
              {
                  Email = a.Email,
