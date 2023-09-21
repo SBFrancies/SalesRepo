@@ -75,8 +75,9 @@ public class Program
         builder.Services.AddSingleton<IValidator<UpdateOrderRequest>, UpdateOrderValidator>();
         builder.Services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
-        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
         builder.Services.AddAuthorization();
+        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+
         builder.Services.AddHealthChecks();
 
         var app = builder.Build();
