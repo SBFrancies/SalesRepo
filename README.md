@@ -1,4 +1,4 @@
-# PaymentGateway
+# SalesRepo
 
 ## Description
 A solution containing a simple API for managing customers, products and orders.
